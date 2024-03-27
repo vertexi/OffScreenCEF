@@ -6,6 +6,11 @@
 
 #  include <iostream>
 
+// Chromium Embedded Framework
+#  include <cef_render_handler.h>
+#  include <cef_client.h>
+#  include <cef_app.h>
+
 // OpenGL
 #  include <GL/glew.h>
 #  include <GLFW/glfw3.h>
@@ -13,11 +18,6 @@
 // Matrices manipulation for OpenGL
 #  include <glm/glm.hpp>
 #  include <glm/ext.hpp>
-
-// Chromium Embedded Framework
-#  include <cef_render_handler.h>
-#  include <cef_client.h>
-#  include <cef_app.h>
 
 #  include <string>
 #  include <vector>

@@ -1,0 +1,9 @@
+{
+    "name": "life-controller-app",
+    "version": "0.0",
+    "dependencies": [
+      "glfw3",
+      "glew",
+      "glm"
+    ]
+}

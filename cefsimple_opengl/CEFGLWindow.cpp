@@ -4,6 +4,10 @@
 #include "CEFGLWindow.hpp"
 #include "GLCore.hpp"
 
+#if !defined(__PRETTY_FUNCTION__) && !defined(__GNUC__)
+#define __PRETTY_FUNCTION__ __FUNCSIG__
+#endif
+
 //------------------------------------------------------------------------------
 //! \brief Callback when the OpenGL base window has been resized. Dispatch this
 //! event to all BrowserView.
@@ -109,7 +113,7 @@ void CEFGLWindow::removeBrowser(std::weak_ptr<BrowserView> web_core)
 bool CEFGLWindow::setup()
 {
     std::vector<std::string> urls = {
-        "https://youtu.be/rRr19a08mHs",
+        "https://www.youtube.com/watch?v=4KtotxNAwME",
         "https://www.researchgate.net/profile/Philip-Polack/publication/318810853_The_kinematic_bicycle_model_A_consistent_model_for_planning_feasible_trajectories_for_autonomous_vehicles/links/5addcbc2a6fdcc29358b9c01/The-kinematic-bicycle-model-A-consistent-model-for-planning-feasible-trajectories-for-autonomous-vehicles.pdf",
         //"https://www.youtube.com/"
     };

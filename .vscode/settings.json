@@ -1,0 +1,7 @@
+{
+    "cmake.configureArgs": [
+        "-DCMAKE_TOOLCHAIN_FILE=C:/Users/Apoptosis/Documents/My_Files/Git_repos/vcpkg/scripts/buildsystems/vcpkg.cmake",
+        "-DOS_WIN=1"
+    ],
+    "cmake.generator": "Visual Studio 17 2022"
+}

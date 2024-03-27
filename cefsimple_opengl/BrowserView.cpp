@@ -2,6 +2,11 @@
 // https://github.com/if1live/cef-gl-example
 // https://github.com/andmcgregor/cefgui
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <codecvt>
+#include <cstring>
 #include "BrowserView.hpp"
 #include "GLCore.hpp"
 
@@ -30,8 +35,23 @@ bool BrowserView::RenderHandler::init()
         255, 255, 255, 255,
     };
 
+    WCHAR pBuf[256];
+    size_t len = sizeof(pBuf);
+    GetModuleFileName(NULL, pBuf, (DWORD)len);
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
+    std::string tempCurrentDirectory = convert.to_bytes(pBuf);
+    char* lastBackslash = std::strrchr((char *)tempCurrentDirectory.c_str(), '\\');
+    if (lastBackslash != NULL)
+    {
+        *(lastBackslash + 1) = '\0'; // add null terminator after last backslash
+    }
+    char currentDirectory[256];
+    strcpy(currentDirectory, tempCurrentDirectory.c_str());
+    auto vertFile = std::string(currentDirectory) + std::string("shaders/tex.vert");
+    auto fragFile = std::string(currentDirectory) + std::string("shaders/tex.frag");
+    printf("%s\n%s\n", vertFile.c_str(), fragFile.c_str());
     // Compile vertex and fragment shaders
-    m_prog = GLCore::createShaderProgram("shaders/tex.vert", "shaders/tex.frag");
+    m_prog = GLCore::createShaderProgram(vertFile.c_str(), fragFile.c_str());
     if (m_prog == 0)
     {
         std::cerr << "shader compile failed" << std::endl;

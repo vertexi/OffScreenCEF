@@ -5,8 +5,8 @@
 #  define CEFGLWINDOW_HPP
 
 // Base application class
-#  include "GLWindow.hpp"
 #  include "BrowserView.hpp"
+#  include "GLWindow.hpp"
 
 // ****************************************************************************
 //! \brief Extend the OpenGL base window and add Chromium Embedded Framework

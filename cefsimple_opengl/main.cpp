@@ -13,7 +13,8 @@ static void CEFsetUp(int argc, char** argv)
     // the process exit code. The |application| parameter may be empty. The
     // |windows_sandbox_info| parameter is only used on Windows and may be NULL (see
     // cef_sandbox_win.h for details).
-    CefMainArgs args(argc, argv);
+    // CefMainArgs args(argc, argv);
+    CefMainArgs args(::GetModuleHandle(nullptr));
     int exit_code = CefExecuteProcess(args, nullptr, nullptr);
     if (exit_code >= 0)
     {
